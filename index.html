@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joe’s Hotdog Stand Order</title>
+    <style type="text/css">
+        .item { width: 150px; display: inline-block; }
+        .price { width: 100px; display: inline-block; text-align: right; }
+        #order_button { margin-top: 20px;}
+    </style>
+</head>
+<body>
+    <h1>Joe's Hotdog Stand Menu </h1>
+    <div id="order-summary"></div>
+    <hr>
+
+    <script>
+        // constants for item prices
+        const HOTDOG_PRICE = 4.99;
+        const FRIES_PRICE = 3.99;
+        const SODA_PRICE = 1.79;
+        const DISCOUNT_THRESHOLD = 30.00;
+        const DISCOUNT_RATE = 0.10;
+        const TAX_RATE = 0.0625;
+
+        function displayMenu() {
+            document.write("<div class='menu-item'>");
+            document.write("<div class='item'>1. Hotdog</div><div class='price'>" + showMoney(HOTDOG_PRICE) + "</div><br>");
+            document.write("<div class='item'>2. French Fries</div><div class='price'>" + showMoney(FRIES_PRICE) + "</div><br>");
+            document.write("<div class='item'>3. Soda</div><div class='price'>" + showMoney(SODA_PRICE) + "</div><br>");
+            document.write("</div>");
+        }
+
+         // function to format num
+         function showMoney(amount) {
+            return Math.round(amount * 100) / 100;
+        }
+
+        function takeOrder() {
+            // get orders
+            numDogs  = parseInt(prompt("How many hotdogs would you like?"));
+            numFries = parseInt(prompt("How many fries would you like?"));
+            numSoda  = parseInt(prompt("How many sodas would you like?"));
+
+            // calculate totals
+            totalDogs  = numDogs * HOTDOG_PRICE;
+            totalFries = numFries * FRIES_PRICE;
+            totalSoda  = numSoda * SODA_PRICE;
+
+            subtotal = totalDogs + totalFries + totalSoda;
+
+            // discount if applicable
+            if (subtotal >= DISCOUNT_THRESHOLD) {
+                discount = subtotal * (1 - DISCOUNT_RATE);
+                tax = discount * TAX_RATE;
+                // add tax
+                tax_discount = discount + tax;
+            } else {
+                discount = 0;
+                tax = subtotal * TAX_RATE;
+                 // add tax
+                total_due = (subtotal + tax);
+            }
+
+        
+            // order summary
+            document.write("<hr>");
+            document.write("<h2>Order Summary</h2> <hr>");
+            document.write("<div class='item'>Hotdogs:</div><div class='price'>" + numDogs + " x " + showMoney(HOTDOG_PRICE) + " = " + showMoney(totalDogs) + "</div><br>");
+            document.write("<div class='item'>French Fries:</div><div class='price'>" + numFries + " x " + showMoney(FRIES_PRICE) + " = " + showMoney(totalFries) + "</div><br>");
+            document.write("<div class='item'>Soda:</div><div class='price'>" + numSoda + " x " + showMoney(SODA_PRICE) + " = " + showMoney(totalSoda) + "</div><br>");
+            document.write("<hr>");
+            if (discount > 0) {
+                document.write("<div class='item'>Subtotal before discount:</div><div class='price'>" + showMoney(subtotal) + "</div><br>");
+                document.write("<div class='item'>Discount:</div><div class='price'>" + DISCOUNT_RATE * 100 + "%</div><br>");
+                document.write("<div class='item'>Subtotal after discount:</div><div class='price'>" + showMoney(discount) + "</div><br>");
+                document.write("<div class='item'>Tax (6.25%):</div><div class='price'>" + showMoney(tax) + "</div><br>");
+            document.write("<hr>");
+            document.write("<div class='item'>Total Amount Due:</div><div class='price'>" + showMoney(tax_discount) + "</div><br>");
+            } else {
+                document.write("<div class='item'>Subtotal:</div><div class='price'>" + showMoney(subtotal) + "</div><br>");
+                document.write("<div class='item'>Tax (6.25%):</div><div class='price'>" + showMoney(tax) + "</div><br>");
+                document.write("<hr>");
+                document.write("<div class='item'>Total Amount Due:</div><div class='price'>" + showMoney(total_due) + "</div><br>");
+                }
+            
+        }
+     
+        displayMenu();
+    </script>
+    <hr>
+    <button id="order_button" onclick="takeOrder()">Place Order</button>
+
+</body>
+</html>
