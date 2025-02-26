@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Online - Ards Bakery</title>
+    <link rel="icon" type="image/png" href="photos/logo.png">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        
+        .order-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background: grey;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
+        }
+        
+        .order-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .order-form label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .order-form input,
+        .order-form select,
+        .order-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .order-form .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .radio-group div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .order-form .radio-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .order-form button {
+            width: 100%;
+            padding: 10px;
+            background: #d35400;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .order-form button:hover {
+            background: #b03a00;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .order-container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <a href="index.html"><img src="photos/logo.png" class="logo"></a>
+        <ul id='nav'>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="#">BEST SELLERS</a></li>
+            <li><a href="#">SUBSCRIPTIONS</a></li>
+            <li><a href="order.html">ORDER ONLINE</a></li>
+            <li><a href="#">MERCH</a></li>
+            <li><a href="#">ABOUT</a></li>
+            <li><a href="#">CONTACT</a></li>
+        </ul>
+    </div>
+
+    <!-- Order Form -->
+    <div class="order-container">
+        <h2>Place Your Order for Pickup</h2>
+        <form class="order-form" action="" method="POST">
+            
+            <!-- Name Input -->
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <!-- Phone Input -->
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <!-- Item Selection -->
+            <label for="item">Select an Item:</label>
+            <select id="item" name="item" required>
+                <option value="">-- Choose an item --</option>
+                <option value="pastries">Pastries</option>
+                <option value="cake">Cake</option>
+                <option value="bread">Bread</option>
+                <option value="tshirt">T-Shirt</option>
+                <option value="hat">Hat</option>
+                <option value="drinkware">Drinkware</option>
+                <option value="accessories">Accessories</option>
+            </select>
+
+            <!-- Pickup Time -->
+            <label>Pickup Time:</label>
+            <div class="radio-group">
+                <input type="radio" id="morning" name="pickup_time" value="morning" required>
+                <label for="morning">Morning (9AM - 12PM)</label>
+
+                <input type="radio" id="afternoon" name="pickup_time" value="afternoon">
+                <label for="afternoon">Afternoon (12PM - 4PM)</label>
+
+                <input type="radio" id="evening" name="pickup_time" value="evening">
+                <label for="evening">Evening (4PM - 7PM)</label>
+            </div>
+
+            <!-- Special Requests -->
+            <label for="requests">Special Requests (Optional):</label>
+            <textarea id="requests" name="requests" rows="3" placeholder="Any special instructions?"></textarea>
+
+            <!-- Submit Button -->
+            <button type="submit">Place Order</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <hr class="white-line">
+    <div class="footer">
+        <div class="container" style="padding-left: 0%; padding-right: 0%; padding-top: 20px; padding-bottom: 50px;">
+            <div>VISIT OUR STORE<br/>2000 Mass Ave<br/>Cambridge, MA 02140</div>
+            <div>SHOP WITH US ONLINE<br/><a href="order.html">Order Online</a><br/><a href="#">Subscription</a><br/><a href="#">Merch</a></div>
+            <div>STAY IN TOUCH<br/>@ardsbakery<br/><a href="#">Contact Us</a></div>
+        </div>
+    </div>
+
+</body>
+</html>
