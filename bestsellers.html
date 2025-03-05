@@ -4,21 +4,61 @@
   <title>Best Sellers - ARDS Bakery</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Vidaloka&display=swap" rel="stylesheet">
-  <!-- Additional styling to replicate the grid layout from index.html -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
   <style type="text/css">
-    h1 {display: none; } /* hide the h1 from layout, while still allowing SEO*/
-       .container {
-               display: grid;
-               grid-template-columns:repeat(3, 1fr);
-               gap: 22px;
-               padding-left: 15%;
-               padding-right: 15%;
-               padding-top: 20px;
-               padding-bottom: 150px;
-               text-align: center
-           }   
-   .container img { width: 100%; height: auto; }  
-</style>
+    h1 {display: none;}
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      padding-left: 15%;
+      padding-right: 15%;
+      padding-top: 20px;
+      padding-bottom: 150px;
+      text-align: center;
+    }
+
+    .container img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .cart {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgb(133, 114, 60);
+      color: rgb(255, 255, 255);
+      padding: 10px 24px;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .cart-details {
+      display: none;
+      position: fixed;
+      top: 60px;
+      right: 20px;
+      background: white;
+      color: black;
+      padding: 15px;
+      border-radius: 5px;
+      width: 200px;
+      box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+    }
+
+
+    .best-seller-item:hover img {
+      transform: scale(1.1);
+    }
+  </style>
 </head>
 <body>
   <div class="nav">
@@ -34,28 +74,74 @@
       <li><a href="#">CONTACT</a></li>
     </ul>
   </div>
-  
-  <!-- Best Sellers Section -->
+
+  <div id="cart" class="cart">
+    Cart: <span id="cart-count">0</span>
+  </div>
+  <div id="cart-details" class="cart-details">
+    <p><strong>Cart Items:</strong></p>
+    <ul id="cart-items"></ul>
+    <p><strong>Total: $<span id="cart-total">0</span></strong></p>
+  </div>
+
   <h2 style="text-align:center;">Our Best Selling Bakery Products</h2>
   <div class="container">
-    <a href="#">
+    <a href="#" class="best-seller-item" data-item="GOLDEN PASTRY" data-price="8">
       <div>
         <img src="bestpastry.webp" alt="Pastries">
-        <br/><br/><br/>PASTRIES
+        <br/><br/><br/>GOLDEN PASTRY, 12oz - $8
       </div>
     </a>
-    <a href="#">
+    <a href="#" class="best-seller-item" data-item="GARDEN CAKE" data-price="17">
       <div>
         <img src="bestcake.webp" alt="Cakes">
-        <br/><br/><br/>CAKES
+        <br/><br/><br/>GARDEN CAKE - $17
       </div>
     </a>
-    <a href="#">
+    <a href="#" class="best-seller-item" data-item="OLIVE BRANCH BREAD" data-price="6">
       <div>
         <img src="bestbread.webp" alt="Breads">
-        <br/><br/><br/>BREADS
+        <br/><br/><br/>OLIVE BRANCH BREAD - $6
       </div>
     </a>
   </div>
+
+  <script>
+    $(document).ready(function(){
+        let cart = {};
+        let total = 0;
+
+        $(".best-seller-item").click(function(){
+            let item = $(this).data("item");
+            let price = parseFloat($(this).data("price"));
+
+            if (cart[item]) {
+                cart[item].count++;
+            } else {
+                cart[item] = { count: 1, price: price };
+            }
+
+            total += price;
+            updateCart();
+        });
+
+        $("#cart").click(function(){
+            $("#cart-details").fadeToggle();
+        });
+
+        function updateCart() {
+            let count = Object.values(cart).reduce((sum, item) => sum + item.count, 0);
+            $("#cart-count").text(count);
+
+            let cartList = $("#cart-items");
+            cartList.empty();
+            $.each(cart, function(name, item) {
+                cartList.append(`<li>${item.count} x ${name} - $${(item.count * item.price).toFixed(2)}</li>`);
+            });
+
+            $("#cart-total").text(total.toFixed(2));
+        }
+    });
+  </script>
 </body>
 </html>
