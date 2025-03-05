@@ -5,73 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Online - Ards Bakery</title>
     <link rel="icon" type="image/png" href="photos/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Vidaloka&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
+    
     <style>
-        
         .order-container {
+            width: 80%;
             max-width: 600px;
-            margin: 40px auto;
+            margin: 50px auto;
             padding: 20px;
-            background: grey;
+            background-color: #222;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            
-        }
-        
-        .order-container h2 {
             text-align: center;
-            margin-bottom: 20px;
+            position: relative;
         }
 
-        .order-form label {
+        label {
             display: block;
-            margin: 10px 0 5px;
-        }
-
-        .order-form input,
-        .order-form select,
-        .order-form textarea {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        .order-form .radio-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .radio-group div {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .order-form .radio-group {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .order-form button {
-            width: 100%;
-            padding: 10px;
-            background: #d35400;
-            color: white;
-            border: none;
-            cursor: pointer;
+            margin-top: 15px;
             font-size: 16px;
         }
 
-        .order-form button:hover {
-            background: #b03a00;
+        select, input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: none;
+            background-color: #333;
+            color: white;
+            font-size: 14px;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
+        .add-item-btn {
+            position: sticky;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            background-color: #555;
+            padding: 10px;
+            border: none;
+            color: white;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .remove-item-btn {
+            background-color: red;
+            padding: 5px 10px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin-top: 5px;
+            border-radius: 5px;
+        }
+
+        .submit-btn {
+            background-color: white;
+            color: black;
+            font-size: 16px;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .item-container {
+            border: 1px solid #555;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            background-color: #333;
+            position: relative;
+        }
+
+        @media (max-width: 600px) {
             .order-container {
                 width: 90%;
             }
@@ -80,74 +94,80 @@
 </head>
 <body>
 
-    <!-- Navigation -->
+    <h1>Order Online - Ards Bakery</h1>
+
+    <!-- nav -->
     <div class="nav">
         <a href="index.html"><img src="photos/logo.png" class="logo"></a>
         <ul id='nav'>
             <li><a href="index.html">HOME</a></li>
-            <li><a href="#">BEST SELLERS</a></li>
-            <li><a href="#">SUBSCRIPTIONS</a></li>
+            <li><a href="bestsellers.html">BEST SELLERS</a></li>
+            <li><a href="subscriptions.html">SUBSCRIPTIONS</a></li>
             <li><a href="order.html">ORDER ONLINE</a></li>
-            <li><a href="#">MERCH</a></li>
-            <li><a href="#">ABOUT</a></li>
-            <li><a href="#">CONTACT</a></li>
+            <li><a href="merch.html">MERCH</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
         </ul>
     </div>
 
-    <!-- Order Form -->
+    <h2>Order for Pickup</h2>
+    <!-- item container -->
     <div class="order-container">
-        <h2>Place Your Order for Pickup</h2>
-        <form class="order-form" action="" method="POST">
-            
-            <!-- Name Input -->
-            <label for="name">Full Name:</label>
-            <input type="text" id="name" name="name" required>
+        <form id="order-form">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
 
-            <!-- Phone Input -->
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" name="phone" required>
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
 
-            <!-- Item Selection -->
-            <label for="item">Select an Item:</label>
-            <select id="item" name="item" required>
-                <option value="">-- Choose an item --</option>
-                <option value="pastries">Pastries</option>
-                <option value="cake">Cake</option>
-                <option value="bread">Bread</option>
-                <option value="tshirt">T-Shirt</option>
-                <option value="hat">Hat</option>
-                <option value="drinkware">Drinkware</option>
-                <option value="accessories">Accessories</option>
-            </select>
-
-            <!-- Pickup Time -->
-            <label>Pickup Time:</label>
-            <div class="radio-group">
-                <input type="radio" id="morning" name="pickup_time" value="morning" required>
-                <label for="morning">Morning (9AM - 12PM)</label>
-
-                <input type="radio" id="afternoon" name="pickup_time" value="afternoon">
-                <label for="afternoon">Afternoon (12PM - 4PM)</label>
-
-                <input type="radio" id="evening" name="pickup_time" value="evening">
-                <label for="evening">Evening (4PM - 7PM)</label>
+            <div id="items-container">
+                <!-- items added dynamically -->
             </div>
 
-            <!-- Special Requests -->
-            <label for="requests">Special Requests (Optional):</label>
-            <textarea id="requests" name="requests" rows="3" placeholder="Any special instructions?"></textarea>
+            <button type="button" class="add-item-btn" onclick="addItem()">+ Add Another Item</button>
 
-            <!-- Submit Button -->
-            <button type="submit">Place Order</button>
+            <label for="instructions">Special Instructions</label>
+            <textarea id="instructions" name="instructions" rows="3" placeholder="Allergies, pickup time requests, etc."></textarea>
+
+            <input type="submit" value="Place Order" class="submit-btn">
         </form>
     </div>
+ <!-- functions for adding items-->
+    <script>
+        function addItem() {
+            container = document.getElementById("items-container");
+            newItem = document.createElement("div");
+            newItem.classList.add("item-container");
+
+            newItem.innerHTML = `
+                <label for="items">Select Item</label>
+                <select name="items">
+                    <option value="bread">Bread</option>
+                    <option value="pastries">Pastries</option>
+                    <option value="cakes">Cakes</option>
+                    <option value="merch">Merchandise</option>
+                    <option value="custom">Custom Order</option>
+                </select>
+                
+                <label for="quantity">Quantity</label>
+                <input type="number" name="quantity" min="1" max="50" value="1" required>
+
+                <button type="button" class="remove-item-btn" onclick="removeItem(this)">Remove</button>
+            `;
+            container.appendChild(newItem);
+        }
+
+        function removeItem(button) {
+            button.parentElement.remove();
+        }
+    </script>
 
     <!-- Footer -->
     <hr class="white-line">
     <div class="footer">
         <div class="container" style="padding-left: 0%; padding-right: 0%; padding-top: 20px; padding-bottom: 50px;">
             <div>VISIT OUR STORE<br/>2000 Mass Ave<br/>Cambridge, MA 02140</div>
-            <div>SHOP WITH US ONLINE<br/><a href="order.html">Order Online</a><br/><a href="#">Subscription</a><br/><a href="#">Merch</a></div>
+            <div>SHOP WITH US ONLINE<br/><a href="order.html">Order Online</a><br/><a href="subscriptions.html">Subscription</a><br/><a href="merch.html">Merch</a></div>
             <div>STAY IN TOUCH<br/>@ardsbakery<br/><a href="#">Contact Us</a></div>
         </div>
     </div>
