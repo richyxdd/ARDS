@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ards Bakery</title>
+    <link rel="icon" type="image/png"  href="photos/logo.png"> <!--for favicon-->
+    <link href="https://fonts.googleapis.com/css2?family=Vidaloka&display=swap" rel="stylesheet"> <!--for font-->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Internal Style Sheet: container for Best Sellers, Subscriptions, and Merch -->
+<style type="text/css">
+
+     h1 {display: none; } /* hide the h1 from layout, while still allowing SEO*/
+    .container {
+            display: grid;
+            grid-template-columns:repeat(3, 1fr);
+            gap: 22px;
+            padding-left: 15%;
+            padding-right: 15%;
+            padding-top: 20px;
+            padding-bottom: 150px;
+            text-align: center
+        }   
+    .container img { width: 100%; height: auto; }  
+   
+    h2 {margin-left: 20%; margin-right: 20%}
+      
+</style>
+
+</head>   
+<body>
+    <h1> SUBSCRIPTIONS</h1>
+    
+    <!-- Navigation -->
+    <div id="header"></div>
+
+    <!-- Main Content Text-->
+    <h2>SUBSCRIPTIONS</h2>
+
+
+
+
+    
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- jQuery to load Header and Footer of Navigation -->
+    <script>
+        $(document).ready(function() {
+            $('#header').load('https://richyxdd.github.io/ARDS/navigation/header.html');
+            $('#footer').load('https://richyxdd.github.io/ARDS/navigation/footer.html');
+        });
+    </script>
+    
+</body>
+</html>
