@@ -6,6 +6,7 @@
     <link rel="icon" type="image/png" href="photos/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Vidaloka&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     
     <style>
@@ -93,19 +94,9 @@
 </head>
 <body>
 
-    <!-- nav -->
-    <div class="nav">
-        <a href="index.html"><img src="photos/logo.png" class="logo"></a>
-        <ul id='nav'>
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="bestsellers.html">BEST SELLERS</a></li>
-            <li><a href="subscriptions.html">SUBSCRIPTIONS</a></li>
-            <li><a href="order.html">ORDER ONLINE</a></li>
-            <li><a href="merch.html">MERCH</a></li>
-            <li><a href="about.html">ABOUT</a></li>
-            <li><a href="contact.html">CONTACT</a></li>
-        </ul>
-    </div>
+      <!-- Navigation -->
+      <div id="header"></div>
+
 
     <h2>Order for Pickup</h2>
     <!-- item container -->
@@ -159,15 +150,17 @@
         }
     </script>
 
-    <!-- Footer -->
-    <hr class="white-line">
-    <div class="footer" style="text-align: center; line-height: 2; color: white; margin-top: 30px">
-        <div class="container" style="padding-left: 10%; padding-right: 10%; padding-top: 20px; padding-bottom: 50px; display: flex; justify-content: space-between;">
-            <div>VISIT OUR STORE<br/>2000 Mass Ave<br/>Cambridge, MA 02140</div>
-            <div>SHOP WITH US ONLINE<br/><a href="order.html">Order Online</a><br/><a href="subscriptions.html">Subscription</a><br/><a href="merch.html">Merch</a></div>
-            <div>STAY IN TOUCH<br/>@ardsbakery<br/><a href="#">Contact Us</a></div>
-        </div>
-    </div>
 
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- jQuery to load Header and Footer of Navigation -->
+    <script>
+        $(document).ready(function() {
+            $('#header').load('https://richyxdd.github.io/ARDS/navigation/header.html');
+            $('#footer').load('https://richyxdd.github.io/ARDS/navigation/footer.html');
+        });
+    </script>
+    
 </body>
 </html>
