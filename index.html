@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ards Bakery</title>
     <link rel="icon" type="image/png"  href="photos/logo.png"> <!--for favicon-->
     <link href="https://fonts.googleapis.com/css2?family=Vidaloka&display=swap" rel="stylesheet"> <!--for font-->
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Internal Style Sheet: container for Best Sellers, Subscriptions, and Merch -->
 <style type="text/css">
@@ -27,17 +30,8 @@
     <h1> ARDS Bakery</h1>
     
     <!-- Navigation -->
-    <div class="nav">
-        <a href="index.html"> <img src="photos/logo.png" class="logo"> </a>
-        <ul id='nav'>
-        <li><a href="bestsellers.html">BEST SELLERS</a></li>  
-        <li><a href="#">SUBSCRIPTIONS</a></li> 
-        <li><a href="order.html">ORDER ONLINE</a></li>
-        <li><a href="#">MERCH</a></li>
-        <li><a href="#">ABOUT</a></li>   
-        <li><a href="#">CONTACT</a></li>
-        </ul>
-    </div>
+    <!-- Nav/Header placeholder -->
+    <div id="header"></div>
 
 
     <!-- Banner Image -->
@@ -97,14 +91,15 @@
         </div>
 
     <!-- Footer -->
-    <hr class="white-line">
-    <div class="footer">
-        <div class="container" style="padding-left: 0%; padding-right: 0%; padding-top: 20px; padding-bottom: 50px;" >
-            <div>VISIT OUR STORE   <br/> 2000 Mass Ave <br/> Cambridge, MA 02140</div>
-            <div>SHOP WITH US ONLINE  <br/> <a href="#">Order Online </a> <br/> <a href="#">Subscription </a> <br/> <a href="#"> Merch</a></div>
-            <div>STAY IN TOUCH  <br/>  @ardsbakery<br/> <a href="#">Contact Us </a></div>
-        </div>
-      </div>
+    <div id="footer"></div>
+
+    <!-- jQuery to load Navigation -->
+    <script>
+        $(document).ready(function() {
+            $('#header').load('header.html');
+            $('#footer').load('footer.html');
+        });
+    </script>
     
 </body>
 </html>
