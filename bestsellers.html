@@ -10,7 +10,7 @@
     h1 {display: none;}
 
     .container {
-      display: grid;
+      display:  grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 22px;
       padding-left: 15%;
@@ -28,32 +28,6 @@
       transition: transform 0.2s ease-in-out;
     }
 
-/* cart styling */
-.cart {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: rgb(133, 114, 60);
-    color: rgb(255, 255, 255);
-    padding: 10px 24px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 20px;
-    cursor: pointer;
-  }
-
-  .cart-details {
-    display: none;
-    position: fixed;
-    top: 60px;
-    right: 20px;
-    background: white;
-    color: black;
-    padding: 15px;
-    border-radius: 5px;
-    width: 200px;
-    box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
-  }
 
     .best-seller-item:hover img {
       transform: scale(1.1);
@@ -68,19 +42,19 @@
   <h2 style="text-align:center;">Our Best Selling Bakery Products</h2>
   <h3 style="text-align:center;">Click Images to Add to Shopping Cart</h3>
   <div class="container">
-    <a href="#" class="best-seller-item" data-item="GOLDEN PASTRY" data-price="8">
+    <a ]class="best-seller-item" data-item="GOLDEN PASTRY" data-price="8">
       <div>
         <img src="photos/bestpastry.webp" alt="Pastries">
         <br/><br/><br/>GOLDEN PASTRY, 12oz - $8
       </div>
     </a>
-    <a href="#" class="best-seller-item" data-item="GARDEN CAKE" data-price="17">
+    <a \ class="best-seller-item" data-item="GARDEN CAKE" data-price="17">
       <div>
         <img src="photos/bestcake.webp" alt="Cakes">
         <br/><br/><br/>GARDEN CAKE - $17
       </div>
     </a>
-    <a href="#" class="best-seller-item" data-item="OLIVE BRANCH BREAD" data-price="6">
+    <a class="best-seller-item" data-item="OLIVE BRANCH BREAD" data-price="6">
       <div>
         <img src="photos/bestbread.webp" alt="Breads">
         <br/><br/><br/>OLIVE BRANCH BREAD - $6
@@ -90,11 +64,10 @@
 
 <!-- Load the Navigation -->
   <div id="footer"></div>
-  <script src="cart.js"></script>
   <script>
     $(document).ready(function() {
-        $('#header').load('https://richyxdd.github.io/ARDS/header.html');
-        $('#footer').load('https://richyxdd.github.io/ARDS/footer.html');
+      $('#header').load('https://richyxdd.github.io/ARDS/header.html')
+            $('#footer').load('https://richyxdd.github.io/ARDS/footer.html');
     });
 </script>
   
