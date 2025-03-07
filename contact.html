@@ -11,18 +11,82 @@
 
     <!-- Internal Style Sheet: container for Best Sellers, Subscriptions, and Merch -->
 <style type="text/css">
+
      h1 {display: none; } /* hide the h1 from layout, while still allowing SEO*/
-        .container {
-                display: grid;
-                grid-template-columns:repeat(3, 1fr);
-                gap: 22px;
-                padding-left: 15%;
-                padding-right: 15%;
-                padding-top: 20px;
-                padding-bottom: 150px;
-                text-align: center
-            }   
+    .container {
+            display: grid;
+            grid-template-columns:repeat(3, 1fr);
+            gap: 22px;
+            padding-left: 15%;
+            padding-right: 15%;
+            padding-top: 20px;
+            padding-bottom: 150px;
+            text-align: center
+        }   
     .container img { width: 100%; height: auto; }  
+   
+    h2 {margin-left: 20%; margin-right: 20%}
+        .order-container {
+            width: 80%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+        }
+        .blurb {
+            text-align: center;
+            font-size: 18px;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 20px;
+            margin-top: 10px;
+            border-radius: 1px;
+            border: 1px solid white;
+            background-color: black;
+            color: white;
+            font-size: 14px;
+            margin-bottom: 13px
+        }
+
+  
+        .submit-btn {
+            align-content: center;
+            width: 100%;
+            padding: 20px ;
+            margin-top: 10px;
+            border-radius: 1px;
+            border: 1px solid white;
+            background-color: white;
+            color: black;
+            font-size: 16px;
+            margin-bottom: 13px;
+            box-sizing: border-box;
+
+        }
+
+        .item-container {
+            border: 10px solid white;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        input:focus, textarea:focus {
+    outline: 2px solid white; /* Change color */
+}
+
+        @media (max-width: 600px) {
+            .order-container {
+                width: 90%;
+            }
+        }
 </style>
 
 </head>   
@@ -34,8 +98,21 @@
 
 
     <!-- Main Content Text-->
-    <h2 style="margin-left: 20%; margin-right: 20%">CONTACT US</h2>
+    <h2>CONTACT US</h2>
+    <p class="blurb"> We love hearing from you! <br> If you have any questions or feedback, please submit your message below.</p>
+    <div class="order-container">
+        <form id="order-form">
+            <input type="text" id="name" name="name" placeholder="Your Name... " required>
 
+            <input type="text" id="email" name="email" placeholder="Your Email... " required>
+
+            <input type="text" id="subject" name="subject" placeholder="Message Subject... " required>
+
+            <textarea id="message" name="message" rows="7" placeholder="Your Message..."></textarea>
+
+            <input type="submit" value="Submit" class="submit-btn">
+        </form>
+    </div>
    
 
     <!-- Footer -->
@@ -51,3 +128,5 @@
     
 </body>
 </html>
+
+
