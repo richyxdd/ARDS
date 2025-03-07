@@ -79,8 +79,8 @@
         }
 
         input:focus, textarea:focus {
-    outline: 2px solid white; /* Change color */
-}
+            outline: 2px solid white;
+        }
 
         @media (max-width: 600px) {
             .order-container {
@@ -99,22 +99,20 @@
 
     <!-- Main Content Text-->
     <h2>CONTACT US</h2>
-    <p class="blurb"> We love hearing from you! <br> If you have any questions or feedback, please submit your message below.</p>
+    <p class="blurb" id="pls-submit-msg"> We love hearing from you! <br> If you have any questions or feedback, please submit your message below.</p>
     <div class="order-container">
         <form id="order-form">
             <input type="text" id="name" name="name" placeholder="Your Name... " required>
-
             <input type="text" id="email" name="email" placeholder="Your Email... " required>
-
             <input type="text" id="subject" name="subject" placeholder="Message Subject... " required>
-
             <textarea id="message" name="message" rows="7" placeholder="Your Message..."></textarea>
-
             <input type="submit" value="Submit" class="submit-btn">
         </form>
     </div>
    
-
+    <!-- Thank You Message -->
+    <div class="blurb" id="thank-you-message">
+    </div>
     <!-- Footer -->
     <div id="footer"></div>
 
@@ -123,7 +121,19 @@
         $(document).ready(function() {
             $('#header').load('https://richyxdd.github.io/ARDS/navigation/header.html');
             $('#footer').load('https://richyxdd.github.io/ARDS/navigation/footer.html');
+        
+        // Handle form submission
+        $('#order-form').submit(function(event) {
+                event.preventDefault(); // prevent page reload
+
+                // hide the form and show  thank you message
+                $('.order-container').hide();
+                $('#pls-submit-msg').hide()
+                $('#thank-you-message').show();
+                $('#thank-you-message').html("Thank you for submitting the form! You will hear back from us shortly at your email address " + $('#email').val() + ".");
+            });
         });
+
     </script>
     
 </body>
