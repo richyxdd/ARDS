@@ -11,38 +11,89 @@
 
     <!-- Internal Style Sheet: container for Best Sellers, Subscriptions, and Merch -->
 <style type="text/css">
+    h2, h3 {text-align: center;}
+    
+    h1 {display: none;}
 
-     h1 {display: none; } /* hide the h1 from layout, while still allowing SEO*/
     .container {
-            display: grid;
-            grid-template-columns:repeat(3, 1fr);
-            gap: 22px;
-            padding-left: 15%;
-            padding-right: 15%;
-            padding-top: 20px;
-            padding-bottom: 150px;
-            text-align: center
-        }   
-    .container img { width: 100%; height: auto; }  
-   
-    h2 {margin-left: 20%; margin-right: 20%}
-      
+      display:  flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    .container img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .subscriptions-item:hover img {
+      transform: scale(1.1);
+    }
+    ol {
+        padding: 20px;
+        list-style-position: inside;
+        font-size: 18px;
+    }
+    
+
 </style>
 
 </head>   
 <body>
+    <!-- https://stackoverflow.com/questions/62122402/how-do-i-create-3-columns-with-responsive-text-and-images -->
+
     <h1> SUBSCRIPTIONS</h1>
     
     <!-- Navigation -->
     <div id="header"></div>
-
-    <!-- Main Content Text-->
-    <h2>SUBSCRIPTIONS</h2>
-
-
-
-
     
+    <h2>Subscriptions</h2>
+    <!-- Main Content Text-->
+    <div style="text-align:center">
+        <h3>How It Works</h3>
+        <ol>
+            <li>CHOOSE YOUR PLAN - Select from our flexible subscription options.</li>
+            <li>PICK YOUR TREATS - Customize your box with your favorite baked goods.</li>
+            <li>SET YOUR SCHEDULE - Get deliveries weekly, bi-weekly, or monthly.</li>
+            <li>ENJOY! - Fresh, delicious treats arrive straight to your door.</li>
+        </ol>
+    </div>
+
+    <div class="container">
+        <div class="box">
+            <h3>Sweet Sampler - $10/mo</h3>
+            <a class="subscriptions-item" data-item="SWEET SAMPLER" data-price="10/mo">
+                <img src="photos/cookies.webp">
+            </a>
+            <p>Perfect for those who love a little bit of everything! Get an assortment of cookies, brownies, and pastries every month.</p>
+        </div>
+        <div>
+            <h3>Baker's Choice - $19/mo</h3>
+            <a class="subscriptions-item" data-item="BAKER'S CHOICE" data-price="19/mo">
+                <img src="photos/cookies2.webp">
+            </a>
+            <p>Let us surprise you! Our team curates a special selection of seasonal favorites and customer favorites.</p>
+        </div>
+        <div>
+            <h3>Bread & Butter - $25/mo</h3>
+            <a class="subscriptions-item" data-item="BREAD & BUTTER" data-price="25/mo">
+                <img src="photos/breadbasket.webp">
+            </a>
+            <p>For those who love fresh-baked bread, this plan includes artisan loaves, bagels, and specialty rolls.</p>
+        </div>
+    </div>
+
 
     <!-- Footer -->
     <div id="footer"></div>

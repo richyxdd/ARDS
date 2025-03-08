@@ -89,7 +89,19 @@
             total += price;
             updateCart();
         });
+      $(".subscriptions-item").click(function(){
+            let item = $(this).data("item");
+            let price = parseFloat($(this).data("price"));
 
+            if (cart[item]) {
+                cart[item].count++;
+            } else {
+                cart[item] = { count: 1, price: price };
+            }
+            
+            total += price;
+            updateCart();
+        });
         
   
       // Toggle cart details view
