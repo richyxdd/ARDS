@@ -25,6 +25,7 @@
         }   
     .container img { width: 100%; height: auto; }  
    
+    
     h2 {margin-left: 20%; margin-right: 20%}
       
 </style>
@@ -71,8 +72,11 @@
     <!-- jQuery to load Header and Footer of Navigation -->
     <script>
         $(document).ready(function() {
-            $('#header').load('https://richyxdd.github.io/ARDS/navigation/header.html');
+            $('#header').load('https://richyxdd.github.io/ARDS/navigation/header.html', function() {
+                $('body').css('visibility', 'visible');
+            });
             $('#footer').load('https://richyxdd.github.io/ARDS/navigation/footer.html');
+
         });
     </script>
     

@@ -52,11 +52,11 @@
 </head>   
 <body>
     <!-- https://stackoverflow.com/questions/62122402/how-do-i-create-3-columns-with-responsive-text-and-images -->
-
-    <h1> SUBSCRIPTIONS</h1>
     
     <!-- Navigation -->
     <div id="header"></div>
+    <h1> SUBSCRIPTIONS</h1>
+
     
     <h2>Subscriptions</h2>
     <!-- Main Content Text-->
@@ -101,8 +101,11 @@
     <!-- jQuery to load Header and Footer of Navigation -->
     <script>
         $(document).ready(function() {
-            $('#header').load('https://richyxdd.github.io/ARDS/navigation/header.html');
+            $('#header').load('https://richyxdd.github.io/ARDS/navigation/header.html', function() {
+                $('body').css('visibility', 'visible');
+            });
             $('#footer').load('https://richyxdd.github.io/ARDS/navigation/footer.html');
+
         });
     </script>
     
