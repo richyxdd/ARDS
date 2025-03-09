@@ -1,6 +1,7 @@
 body {font-size: 15px; margin: 0; padding: 0; height: 100%; background-color: black; color: white}
 
 /* text styling*/
+h1 { text-align: center; margin-top: 100px; color: white; font-size: 30px}
 h2 { text-align: center; margin-top: 100px; color: white; font-size: 30px}
 h3 {font-size: 18px; color: white; text-align: center; font-weight: normal;}
 p {color: white; font-size: 22px; margin-left: 20px; text-align: left}
@@ -14,6 +15,9 @@ div.nav {text-align: center;}
 ul#nav { list-style-type: none; margin-top: 10px;}
 ul#nav li {text-decoration: none; display:inline-block; margin: 10px 50px}
 ul#nav li a{text-decoration: none; display:inline-block; padding: 15px; color: white; font-size: 15px}
+#header {height: 300px;}
+
+
 
 /* cart styling */
 
