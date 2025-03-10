@@ -51,7 +51,7 @@
 
 
 <div id="cart" class="cart">
-    CART: <span id="cart-count">0</span>
+  <i class="fa fa-shopping-cart"></i> <span id="cart-count">0</span>
   </div>
   <div id="cart-details" class="cart-details">
     <p><strong>Cart Items:</strong></p>
@@ -132,7 +132,7 @@
           localStorage.setItem("total", total.toFixed(2));
       }
     });
-    function myFunction() {
+    function myFunction() { // function heavilly borrowed from w3school instructions on nav sidebars
     var x = document.getElementById("myNav");
     if (x.className === "nav") {
       x.className += " responsive";
