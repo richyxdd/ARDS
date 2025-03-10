@@ -32,6 +32,12 @@
     z-index: 9999;
   }
     
+.cart-details p {
+      display: block;
+      color: black;
+      font-size: medium;
+    }
+
 .empty-cart {
     display: block;
     background: rgb(133, 114, 60);
@@ -78,7 +84,6 @@
     <p>Cart Items:</p>
     <ul id="cart-items"></ul>
     <p><strong>Total: $<span id="cart-total">0</span></strong></p>
-    <p><strong>Grand Total: $<span id="grand-total">0</span></strong></p> <!-- Added this -->    <button class="empty-cart">Empty Cart</button>
   </div>
   
   <script>
@@ -157,8 +162,6 @@
           });
   
           $("#cart-total").text(total.toFixed(2));
-          $("#grand-total").text(total.toFixed(2));
-
           // Save cart state in localStorage
           localStorage.setItem("cart", JSON.stringify(cart));
           localStorage.setItem("total", total.toFixed(2));
