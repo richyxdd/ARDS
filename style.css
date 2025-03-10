@@ -77,20 +77,32 @@ body { visibility: hidden; }
   ul#nav {display: none;}
   .nav .icon {
     display: block;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    font-size: 23px;
   }
 
 
   .nav.responsive {position: relative;}
   .nav.responsive .icon {
     position: absolute;
-    right: 20px;
+    left: 20px;
     top: 20px;
   }
   .nav.responsive ul#nav {
     display: block;
-    width: 100%;
     text-align: left;
+    padding-top: 5px;
+     margin-top: -150px;
+     padding-left: 20px;
+     padding-right: 20px;
+     position: absolute;
+    background-color: black;
   }
+
+
+
   .nav.responsive ul#nav li {
     display: block;
     margin: 0;
