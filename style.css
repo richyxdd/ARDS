@@ -53,8 +53,47 @@ ul#nav li a{text-decoration: none; display:inline-block; padding: 15px; color: w
 
 /* body styling -- initially hidden until all is loaded*/
 body { visibility: hidden; }
-/* responsiveness styling -- need to add to*/
-@media (max-width:600px){
+/* responsiveness styling -- need to add to just commete out*/
+/* @media (max-width:600px){
     ul#nav li {text-decoration: none; display:inline-block; margin: 2px 27px;}
     ul#nav li a {font-size: 20px}
+} */
+
+
+/* ADDED HERE:hamburger nav */
+.nav .icon { 
+  display: none;
+  /* position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 24px;
+  color: white; */
 }
+
+ @media  (max-width:1000px){
+  /* ul#nav li {text-decoration: none; display:inline-block; margin: 2px 27px;}
+  ul#nav li a {font-size: 20px;}
+  /* Updated hamburger styles */ 
+  ul#nav {display: none;}
+  .nav .icon {
+    display: block;
+  }
+
+
+  .nav.responsive {position: relative;}
+  .nav.responsive .icon {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+  .nav.responsive ul#nav {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+  .nav.responsive ul#nav li {
+    display: block;
+    margin: 0;
+    text-align: left;
+  }
+}  
