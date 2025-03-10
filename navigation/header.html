@@ -30,6 +30,15 @@
     width: 200px;
     box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
   }
+    
+.empty-cart {
+  background-color:rgb(133, 114, 60);
+  color:rgb(255, 255, 255);
+  margin: auto;
+  text-align: center;
+  width: 200px;
+}    
+
 </style>
 
 <!-- cart styling-->
@@ -81,8 +90,8 @@
           total += price;
           updateCart();
       });
-
-      $(".merch-item").click(function(){
+        
+    $(".merch-item").click(function(){
             let item = $(this).data("item");
             let price = parseFloat($(this).data("price"));
 
@@ -95,7 +104,8 @@
             total += price;
             updateCart();
         });
-      $(".subscriptions-item").click(function(){
+    
+    $(".subscriptions-item").click(function(){
             let item = $(this).data("item");
             let price = parseFloat($(this).data("price"));
 
@@ -109,9 +119,14 @@
             updateCart();
         });
         
+    $(".empty-cart").click(function() {
+          cart = {};
+          total = 0;
+          updateCart();
+        });
   
       // Toggle cart details view
-      $("#cart").click(function(){
+    $("#cart").click(function(){
           $("#cart-details").fadeToggle();
       });
   
