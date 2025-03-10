@@ -130,9 +130,11 @@
         });
         
     $(".empty-cart").click(function() {
-          cart = {};
-          total = 0;
-          updateCart();
+        cart = {};
+        total = 0;
+        localStorage.removeItem("cart");
+        localStorage.removeItem("total");
+        updateCart();
         });
   
       // Toggle cart details view
