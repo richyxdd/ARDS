@@ -12,7 +12,9 @@
     <!-- Internal Style Sheet: container for Best Sellers, Subscriptions, and Merch -->
 <style type="text/css">
     h2, h3 {text-align: center;}
-    
+    h3 {
+        font-size: 20px;
+    }
     h1 {display: none;}
 
     .container {
@@ -28,7 +30,9 @@
         flex-direction: column;
         justify-content: center;
         text-align: center;
+        align-items: center;
     }
+
     .container img {
       width: 200px;
       height: 200px;
@@ -41,26 +45,58 @@
       transform: scale(1.1);
     }
     ol {
-        padding: 20px;
         list-style-position: inside;
-        font-size: 18px;
+        font-size: 24px;
+        background: #fff8e1;
+        color: rgb(133, 114, 60);
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px 30px;
+        border-left: 6px solid #ff6600;
+        border-radius: 10px;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
     }
     
+    .show-list {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    ol li {
+        margin-bottom: 15px;
+        font-weight: bold;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease-in-out;
+    }
+    .how-it-works {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
 
 </style>
 
-</head>   
+</head>
 <body>
-    <!-- https://stackoverflow.com/questions/62122402/how-do-i-create-3-columns-with-responsive-text-and-images -->
+    <script>
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 100) {
+                    $("ol li").addClass("show-list");
+                }
+            });
+        });
+    </script>
     
     <!-- Navigation -->
     <div id="header"></div>
     <h1> SUBSCRIPTIONS</h1>
 
-    
-    <h2>Subscriptions</h2>
     <!-- Main Content Text-->
-    <div style="text-align:center">
+    <div class="how-it-works">
+        <h2>Subscriptions</h2>
         <h3>How It Works</h3>
         <ol>
             <li>CHOOSE YOUR PLAN - Select from our flexible subscription options.</li>
@@ -74,21 +110,21 @@
         <div class="box">
             <h3>Sweet Sampler - $10/mo</h3>
             <a class="subscriptions-item" data-item="SWEET SAMPLER" data-price="10/mo">
-                <img src="photos/cookies.webp">
+                <img src="photos/cookies.webp" alt="Sweet Sampler Subscription Box">
             </a>
             <p>Perfect for those who love a little bit of everything! Get an assortment of cookies, brownies, and pastries every month.</p>
         </div>
-        <div>
+        <div class ="box">
             <h3>Baker's Choice - $19/mo</h3>
             <a class="subscriptions-item" data-item="BAKER'S CHOICE" data-price="19/mo">
-                <img src="photos/cookies2.webp">
+                <img src="photos/cookies2.webp" alt="Baker's CHoice Subscription Box">
             </a>
             <p>Let us surprise you! Our team curates a special selection of seasonal favorites and customer favorites.</p>
         </div>
-        <div>
+        <div class="box">
             <h3>Bread & Butter - $25/mo</h3>
             <a class="subscriptions-item" data-item="BREAD & BUTTER" data-price="25/mo">
-                <img src="photos/breadbasket.webp">
+                <img src="photos/breadbasket.webp" alt="Bread & Butter Subscription Box">
             </a>
             <p>For those who love fresh-baked bread, this plan includes artisan loaves, bagels, and specialty rolls.</p>
         </div>
