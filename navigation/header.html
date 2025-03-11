@@ -39,42 +39,62 @@
       font-size: medium;
     }
 
-.empty-cart {
+.cart-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.empty-cart, .undo-cart {
     display: block;
-    background: rgb(133, 114, 60);
-    color: rgb(255, 255, 255);
-    padding: 10px 24px;
-    border: none;
+    flex: 1;
+    padding: 6px 12px;
+    font-size: 14px;
     border-radius: 5px;
     font-weight: bold;
-    font-size: 16px;
     cursor: pointer;
-    width: 100%;
-    margin-top: 10px;
     text-align: center;
+    width: 50%;
+}
+
+.empty-cart {
+    background: rgb(133, 114, 60);
+    color: white;
+    border: none;
+}
+
+.undo-cart {
+    background: gray;
+    color: white;
+    border: none;
 }
 
 .empty-cart:hover {
     background: rgb(156, 134, 74);
 }
 
+.undo-cart:hover {
+    background: rgb(100, 100, 100);
+}
+
+
 .checkout-cart {
     display: block;
-    background: black; /* Black color */
-    color: white; /* White text */
-    padding: 12px 24px; /* Slightly larger */
+    background: black;
+    color: white;
+    padding: 12px 24px;
     border: none;
     border-radius: 5px;
     font-weight: bold;
-    font-size: 18px; /* Slightly bigger than empty-cart */
+    font-size: 18px;
     cursor: pointer;
-    width: 100%; /* Full width */
-    margin-top: 10px; /* Space below the empty-cart button */
+    width: 100%;
+    margin-top: 10px;
     text-align: center;
 }
 
 .checkout-cart:hover {
-    background: rgb(50, 50, 50); /* Slightly lighter black on hover */
+    background: rgb(50, 50, 50);
 }
     
 </style>
@@ -105,6 +125,7 @@
     <ul id="cart-items"></ul>
     <p><strong>Total: $<span id="cart-total">0</span></strong></p>
     <button href="#" class="empty-cart">Empty Cart</button>
+    <button href="#" class="undo-cart">Undo Selection</button>
     <button class="checkout-cart" onclick="window.location.href='order.html'">Checkout</button>
 
   </div>
@@ -167,6 +188,32 @@
         localStorage.removeItem("total");
         updateCart();
         });
+        
+    $(".undo-cart").click(function() {
+
+    let mostFreqItem = Object.keys(cart).reduce(function(a, b) {
+    if (cart[a].count > cart[b].count) {
+        return a;
+    } else {
+        return b;
+    }
+    });
+    
+    if (cart[mostFreqItem].count > 1) {
+        cart[mostFreqItem].count--;
+    } else {
+        delete cart[mostFreqItem];
+    }
+    
+    total -= cart[mostFrequentItem]?.price || 0; // Adjust the total price
+    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("total", total.toFixed(2));
+    updateCart(); 
+
+    if (Object.keys(cart).length === 0) 
+        return;
+        
+    });
   
       // Toggle cart details view
     $("#cart").click(function(){
@@ -190,7 +237,7 @@
           localStorage.setItem("total", total.toFixed(2));
       }
     });
-    function myFunction() { // function heavilly borrowed from w3school instructions on nav sidebars
+    function myFunction() { // function heavily borrowed from w3school instructions on nav sidebars
     var x = document.getElementById("myNav");
     if (x.className === "nav") {
       x.className += " responsive";
