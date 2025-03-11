@@ -102,7 +102,7 @@
     <p class="blurb" id="pls-submit-msg"> We love hearing from you! <br> If you have any questions or feedback, please submit your message below.</p>
     <div class="order-container">
         <form id="order-form">
-            <input type="text" id="name" name="name" placeholder="Your Name... " required>
+            <input type="text" id="name" name="name" placeholder="Your Full Name... " required>
             <input type="text" id="email" name="email" placeholder="Your Email... " required>
             <input type="text" id="subject" name="subject" placeholder="Message Subject... " required>
             <textarea id="message" name="message" rows="7" placeholder="Your Message..."></textarea>
@@ -128,6 +128,14 @@
         // Handle form submission
         $('#order-form').submit(function(event) {
                 event.preventDefault(); // prevent page reload
+
+                let nameCheck = $('#name').val().trim();
+                let nameInTwo = nameCheck.split(" "); //
+
+                if (nameInTwo.length < 2) {
+                    alert('Please enter your first name and your last name.');
+                    return; 
+                }
 
                 // hide the form and show  thank you message
                 $('.order-container').hide();
