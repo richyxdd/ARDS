@@ -90,6 +90,7 @@
                 width: 90%;
             }
         }
+
     </style>
 </head>
 <body>
@@ -122,73 +123,55 @@
     </div>
  <!-- functions for adding items-->
     <script>
-        function addItem() {
-            container = document.getElementById("items-container");
-            newItem = document.createElement("div");
-            newItem.classList.add("item-container");
+      // Define an array of objects for products
+      const products = [
+        { name: "Bread", value: "bread" },
+        { name: "Pastries", value: "pastries" },
+        { name: "Cakes", value: "cakes" },
+        { name: "Ards T (size in person)", value: "ards_t" },
+        { name: "Ards Hat", value: "ards_hat" },
+        { name: "Ards Bottle", value: "ards_bottle" },
+        { name: "Family Box", value: "family_box" }
+    ];
 
-            newItem.innerHTML = `
-                <label for="items">Select Item</label>
-                <select name="items">
-                    <option value="bread">Bread</option>
-                    <option value="pastries">Pastries</option>
-                    <option value="cakes">Cakes</option>
-                    <option value="ards T (size in person)">ards T (size in person)</option>
-                    <option value="ards hat">ards hat</option>
-                    <option value="ards bottle">ards bottle</option>
-                    <option value="family box">ards bottle</option>
-                </select>
-                
-                <label for="quantity">Quantity</label>
-                <input type="number" name="quantity" min="1" max="50" value="1" required>
+    function addItem() {
+        let container = document.getElementById("items-container");
+        let newItem = document.createElement("div");
+        newItem.classList.add("item-container");
 
-                <button type="button" class="remove-item-btn" onclick="removeItem(this)">Remove</button>
-            `;
-            container.appendChild(newItem);
-        }
+        // Generate options dynamically from the products array
+        let optionsHTML = products.map(product => 
+            `<option value="${product.value}">${product.name}</option>`
+        ).join('');
 
-        function removeItem(button) {
-            button.parentElement.remove();
-        }
+        newItem.innerHTML = `
+            <label>Select Item</label>
+            <select name="items">${optionsHTML}</select>
+
+            <label>Quantity</label>
+            <input type="number" name="quantity" min="1" max="50" value="1" required>
+
+            <button type="button" class="remove-item-btn" onclick="removeItem(this)">Remove</button>
+        `;
+
+        container.appendChild(newItem);
+    }
+
+    function removeItem(button) {
+        button.parentElement.remove();
+    }
+
+        $(document).ready(function() {
+            $('#header').load('https://richyxdd.github.io/ARDS/navigation/header.html', function() {
+                $('body').css('visibility', 'visible');
+            });
+            $('#footer').load('https://richyxdd.github.io/ARDS/navigation/footer.html');
+
+        });
     </script>
 
     <!-- Footer -->
     <div id="footer"></div>
-
-  <!-- jQuery to load Header and Footer of Navigation -->
-  <script>
-    $(document).ready(function() {
-        // ADDED JSON CODE REQUIREMENT - DARRIEN
-        let cartJSON = localStorage.getItem("cartJSON");
-        let cart = JSON.parse(cartJSON) || {};
-        let itemsContainer = $("#items-container");
-
-        $.each(cart, function(name, item) {
-            let newItem = `
-                <div class="item-container">
-                    <label>Select Item</label>
-                    <select name="items">
-                        <option value="${name}" selected>${name}</option>
-                    </select>
-
-                    <label>Quantity</label>
-                    <input type="number" name="quantity" min="1" max="50" value="${item.count}" required>
-
-                    <button type="button" class="remove-item-btn" onclick="removeItem(this)">Remove</button>
-                </div>
-            `;
-            itemsContainer.append(newItem);
-        });
-        localStorage.removeItem("cartJSON");
-        // END OF DARRIEN'S CODE
-        
-        $('#header').load('https://richyxdd.github.io/ARDS/navigation/header.html', function() {
-            $('body').css('visibility', 'visible');
-        });
-        $('#footer').load('https://richyxdd.github.io/ARDS/navigation/footer.html');
-
-    });
-</script>
 
 </body>
 </html>
