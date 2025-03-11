@@ -213,6 +213,11 @@
             if (cart[lastAddedItem]) {
                 total = total - cart[lastAddedItem].price;
             }
+        
+            total = 0;
+            Object.keys(cart).forEach(function(item) {
+                total = total + (cart[item].count * cart[item].price);
+            });
     
             localStorage.setItem("cart", JSON.stringify(cart));
             localStorage.setItem("total", total.toFixed(2));
@@ -220,11 +225,11 @@
             updateCart();
         }
 
-        $(".checkout-cart").click(function() {
-            let cartJSON = JSON.stringify(cart);
-            localStorage.setItem("cartJSON", cartJSON);
-            window.location.href = "order.html";
-        });
+    $(".checkout-cart").click(function() {
+        let cartJSON = JSON.stringify(cart);
+        localStorage.setItem("cartJSON", cartJSON);
+        window.location.href = "order.html";
+    });
 });
 
   
