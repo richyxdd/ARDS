@@ -25,17 +25,23 @@
     }   
     .container img { width: 100%; height: auto; }  
    
-    .container {
-      display:  grid;
-      grid-template-columns: repeat(3, 1fr);
+    .team {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 22px;
       padding-left: 15%;
       padding-right: 15%;
       padding-top: 20px;
       padding-bottom: 150px;
       text-align: center;
+      justify-content: center;
     }
-
+    .member {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
     .member img {
       width: 200px;
       height: 200px;
@@ -43,27 +49,40 @@
       border-radius: 10px;
       transition: transform 0.2s ease-in-out;
     }
+    .member p {
+        margin-top: 10px;
+        font-size: 1.1em;
+    }
+
+    .about-section {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 20px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 500px;
+        margin: auto;
+    }
 
     @media (max-width: 900px) {
-    .container {
-        grid-template-columns: repeat(2, 1fr); /* Change to 2 columns on medium screens */
-        padding-left: 5%;
-        padding-right: 5%;
+        .team {
+            grid-template-columns: repeat(2, 1fr); /* Change to 2 columns on medium screens */
+            padding-left: 5%;
+            padding-right: 5%;
         }
     }
 
-  @media (max-width: 600px) {
-    .container {
-        grid-template-columns: repeat(1, 1fr); /* Change to 1 column on small screens */
-        padding-left: 5%;
-        padding-right: 5%;
+    @media (max-width: 600px) {
+        .team {
+            grid-template-columns: repeat(1, 1fr); /* Change to 1 column on small screens */
+            padding-left: 5%;
+            padding-right: 5%;
         }
-
-    .container img {
-        width: 100%; /* Ensure images resize correctly */
-        height: auto;
+        .about-section p {
+            width: auto;
         }
-  }
+    }
 
     h2 {margin-left: 20%; margin-right: 20%}
       
@@ -77,37 +96,38 @@
     <div id="header"></div>
 
     <!-- Main Content Text-->
-    <h2>ABOUT</h2>
-    <p>
-        Welcome to ARDS Bakery, where technology meets taste! We are four passionate computer science students from Tufts University who came together to combine our love for coding and baking. Our mission is simple: to bring fresh, delicious baked goods straight to your doorstep through a seamless subscription-based service.
-    </p>
+    <div class="about-section">
+        <h2>ABOUT</h2>
+        <p>
+            Welcome to ARDS Bakery, where technology meets taste! We are four passionate computer science students from Tufts University who came together to combine our love for coding and baking. Our mission is simple: to bring fresh, delicious baked goods straight to your doorstep through a seamless subscription-based service.
+        </p>
+        
+        <h2>Our Story</h2>
+        <p>
+            It all started with a late-night coding session, a box of stale cookies, and an idea—what if we could use our technical skills to make high-quality, homemade treats more accessible? From that moment, ARDS Bakery was born. We designed an intuitive platform that makes it easy for you to enjoy freshly baked goods on a regular basis, all without lifting a finger.
+        </p>
 
-    <h2>Our Story</h2>
-    <p>
-        It all started with a late-night coding session, a box of stale cookies, and an idea—what if we could use our technical skills to make high-quality, homemade treats more accessible? From that moment, [Your Bakery Name] was born. We designed an intuitive platform that makes it easy for you to enjoy freshly baked goods on a regular basis, all without lifting a finger.
-    </p>
-    
-    
-    <h2>How It Works</h2>
-    <p>
-        Our subscription model allows you to choose your favorite baked goods, set your delivery schedule, and enjoy hassle-free indulgence. We handle everything—from sourcing quality ingredients to baking with care and delivering straight to your door.
-    </p>
-    
-    <h2>Meet the Team</h2>
-    <p>
-        We are four friends, classmates, and problem-solvers who love to experiment, both in the kitchen and in our code. With expertise in software development, UX design, and data analytics, we've built a platform that ensures a smooth experience for our customers. And yes, we're also the ones in the kitchen, perfecting every batch to make sure you get only the best.
-    </p>
-    <div class="container">
-        <div class="member"><img src="photos/member1.jpg"><p>Sophie Lachenauer</p>"</div>
-        <div class="member"><img src="photos/member2.jpg"><p>Darrien Johnsen</p>"</div>
-        <div class="member"><img src="photos/member3.jpg"><p>Richard</p>"</div>
-        <div class="member"><img src="photos/member4.jpg"><p>Alexander Lee</p>"</div>
+        <h2>How It Works</h2>
+        <p>
+            Our subscription model allows you to choose your favorite baked goods, set your delivery schedule, and enjoy hassle-free indulgence. We handle everything—from sourcing quality ingredients to baking with care and delivering straight to your door.
+        </p>
+        
+        <h2>Meet the Team</h2>
+        <p>
+            We are four friends, classmates, and problem-solvers who love to experiment, both in the kitchen and in our code. With expertise in software development, UX design, and data analytics, we've built a platform that ensures a smooth experience for our customers. And yes, we're also the ones in the kitchen, perfecting every batch to make sure you get only the best.
+        </p>
+        <div class="team">
+            <div class="member"><img src="photos/member1.jpg"><p>Sophie Lachenauer</p></div>
+            <div class="member"><img src="photos/member2.jpg"><p>Darrien Johnsen</p></div>
+            <div class="member"><img src="photos/member3.jpg"><p>Richard</p></div>
+            <div class="member"><img src="photos/member4.jpg"><p>Alexander Lee</p></div>
+        </div>
+        
+        <h2>Join the Community</h2>
+        <p>
+            At ARDS Bakery, we believe in the power of good food and great technology. Whether you're a sweet tooth, a busy professional, or someone who just loves a warm cookie with their coffee, we've got something for you. Subscribe today and experience the perfect blend of baking and innovation!
+        </p>
     </div>
-    
-    <h2>Join the Community</h2>
-    <p>
-        At ARDS Bakery, we believe in the power of good food and great technology. Whether you're a sweet tooth, a busy professional, or someone who just loves a warm cookie with their coffee, we've got something for you. Subscribe today and experience the perfect blend of baking and innovation!
-    </p>
 
     <!-- Footer -->
     <div id="footer"></div>
