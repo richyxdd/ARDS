@@ -58,6 +58,25 @@
     background: rgb(156, 134, 74);
 }
 
+.checkout-cart {
+    display: block;
+    background: black; /* Black color */
+    color: white; /* White text */
+    padding: 12px 24px; /* Slightly larger */
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px; /* Slightly bigger than empty-cart */
+    cursor: pointer;
+    width: 100%; /* Full width */
+    margin-top: 10px; /* Space below the empty-cart button */
+    text-align: center;
+}
+
+.checkout-cart:hover {
+    background: rgb(50, 50, 50); /* Slightly lighter black on hover */
+}
+    
 </style>
 
 <!-- cart styling-->
@@ -85,6 +104,9 @@
     <p>Cart Items:</p>
     <ul id="cart-items"></ul>
     <p><strong>Total: $<span id="cart-total">0</span></strong></p>
+    <button href="#" class="empty-cart">Empty Cart</button>
+    <button class="checkout-cart" onclick="window.location.href='order.html'">Checkout</button>
+
   </div>
   
   <script>
