@@ -127,7 +127,7 @@
         <button href="#" class="empty-cart">Empty Cart</button>
         <button href="#" class="undo-cart">Undo Selection</button>
     </div>    
-    <button class="checkout-cart" onclick="window.location.href='order.html'">Checkout</button>
+    <button href="order.html" class="checkout-cart">Checkout</button>
 
   </div>
   
@@ -194,8 +194,7 @@
         localStorage.removeItem("total");
         updateCart();
         });
-        
-    $(".undo-cart").click(function() {
+
 
     $(".undo-cart").click(function() {
         if (cartHistory.length === 0) {
@@ -220,6 +219,12 @@
             localStorage.setItem("cartHistory", JSON.stringify(cartHistory));
             updateCart();
         }
+
+        $(".checkout-cart").click(function() {
+            let cartJSON = JSON.stringify(cart);
+            localStorage.setItem("cartJSON", cartJSON);
+            window.location.href = "order.html";
+        });
 });
 
   
