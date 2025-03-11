@@ -193,16 +193,22 @@
         localStorage.removeItem("cart");
         localStorage.removeItem("total");
         updateCart();
-        });
+    });
 
 
     $(".undo-cart").click(function() {
         if (cartHistory.length === 0) {
             return;
+        } else if (cartHistory.length === 1) {
+            cart = {};
+            total = 0;
+            localStorage.removeItem("cart");
+            localStorage.removeItem("total");
+            updateCart();
         }
     
         let lastAddedItem = cartHistory.pop();
-    
+
         if (cart[lastAddedItem]) {
             if (cart[lastAddedItem].count > 1) {
                 cart[lastAddedItem].count = cart[lastAddedItem].count - 1;
@@ -210,26 +216,21 @@
                 delete cart[lastAddedItem];
             }
     
-            if (cart[lastAddedItem]) {
-                total = total - cart[lastAddedItem].price;
-            }
-        
-            total = 0;
-            Object.keys(cart).forEach(function(item) {
-                total = total + (cart[item].count * cart[item].price);
-            });
+            total = total - lastAddedItem.price;
     
             localStorage.setItem("cart", JSON.stringify(cart));
             localStorage.setItem("total", total.toFixed(2));
             localStorage.setItem("cartHistory", JSON.stringify(cartHistory));
             updateCart();
         }
+    });
 
     $(".checkout-cart").click(function() {
         let cartJSON = JSON.stringify(cart);
         localStorage.setItem("cartJSON", cartJSON);
         window.location.href = "order.html";
     });
+    
 });
 
   
