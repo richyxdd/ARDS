@@ -153,6 +153,7 @@
           }
   
           total += price;
+          cartHistory.push(item);
           updateCart();
       });
         
@@ -167,6 +168,7 @@
             }
 
             total += price;
+            cartHistory.push(item);
             updateCart();
         });
     
@@ -181,6 +183,7 @@
             }
             
             total += price;
+            cartHistory.push(item);
             updateCart();
         });
         
@@ -194,29 +197,31 @@
         
     $(".undo-cart").click(function() {
 
-    let mostFreqItem = Object.keys(cart).reduce(function(a, b) {
-    if (cart[a].count > cart[b].count) {
-        return a;
-    } else {
-        return b;
-    }
-    });
-    
-    if (cart[mostFreqItem].count > 1) {
-        cart[mostFreqItem].count--;
-    } else {
-        delete cart[mostFreqItem];
-    }
-    
-    total -= cart[mostFreqItem]?.price || 0; // Adjust the total price
-    localStorage.setItem("cart", JSON.stringify(cart));
-    localStorage.setItem("total", total.toFixed(2));
-    updateCart(); 
-
-    if (Object.keys(cart).length === 0) 
+    $(".undo-cart").click(function() {
+    if (cartHistory.length === 0) {
         return;
-        
-    });
+    }
+
+    let lastAddedItem = cartHistory.pop();
+
+    if (cart[lastAddedItem]) {
+        if (cart[lastAddedItem].count > 1) {
+            cart[lastAddedItem].count = cart[lastAddedItem].count - 1;
+        } else {
+            delete cart[lastAddedItem];
+        }
+
+        if (cart[lastAddedItem]) {
+            total = total - cart[lastAddedItem].price;
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        localStorage.setItem("total", total.toFixed(2));
+        localStorage.setItem("cartHistory", JSON.stringify(cartHistory));
+        updateCart();
+    }
+});
+
   
       // Toggle cart details view
     $("#cart").click(function(){
@@ -238,6 +243,7 @@
           // Save cart state in localStorage
           localStorage.setItem("cart", JSON.stringify(cart));
           localStorage.setItem("total", total.toFixed(2));
+          localStorage.setItem("cartHistory", JSON.stringify(cartHistory));
       }
     });
     function myFunction() { // function heavily borrowed from w3school instructions on nav sidebars
