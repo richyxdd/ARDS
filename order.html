@@ -158,6 +158,30 @@
   <!-- jQuery to load Header and Footer of Navigation -->
   <script>
     $(document).ready(function() {
+        // ADDED JSON CODE REQUIREMENT - DARRIEN
+        let cartJSON = localStorage.getItem("cartJSON");
+        let cart = JSON.parse(cartJSON) || {};
+        let itemsContainer = $("#items-container");
+
+        $.each(cart, function(name, item) {
+            let newItem = `
+                <div class="item-container">
+                    <label>Select Item</label>
+                    <select name="items">
+                        <option value="${name}" selected>${name}</option>
+                    </select>
+
+                    <label>Quantity</label>
+                    <input type="number" name="quantity" min="1" max="50" value="${item.count}" required>
+
+                    <button type="button" class="remove-item-btn" onclick="removeItem(this)">Remove</button>
+                </div>
+            `;
+            itemsContainer.append(newItem);
+        });
+        localStorage.removeItem("cartJSON");
+        // END OF DARRIEN'S CODE
+        
         $('#header').load('https://richyxdd.github.io/ARDS/navigation/header.html', function() {
             $('body').css('visibility', 'visible');
         });
