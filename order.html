@@ -150,10 +150,10 @@
 
             // Generate options dynamically
             let optionsHTML = products.map(product => 
-                `<option value="${product.value}" ${product.name === name ? "selected" : ""}>${product.name}</option>`
+                <option value="${product.value}" ${product.name === name ? "selected" : ""}>${product.name}</option>
             ).join('');
 
-            newItem.innerHTML = `
+            newItem.innerHTML = 
                 <label>Select Item</label>
                 <select name="items">${optionsHTML}</select>
 
@@ -161,7 +161,7 @@
                 <input type="number" name="count" min="1" max="50" value="${count}" required>
 
                 <button type="button" class="remove-item-btn" onclick="removeItem(this)">Remove</button>
-            `;
+            ;
 
             container.appendChild(newItem);
         }
