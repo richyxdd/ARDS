@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="style.css">
 
-    
     <style>
         .order-container {
             width: 80%;
@@ -90,7 +89,6 @@
                 width: 90%;
             }
         }
-
     </style>
 </head>
 <body>
@@ -100,7 +98,8 @@
 
     <h2>Order for Pickup</h2>
     <h3>Place order for pick up in advance for utmost freshness!!</h3>
-    <!-- item container -->
+    
+    <!-- Order Form -->
     <div class="order-container">
         <form id="order-form">
             <label for="name">Full Name</label>
@@ -110,7 +109,7 @@
             <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
 
             <div id="items-container">
-                <!-- items added dynamically -->
+                <!-- Items added dynamically -->
             </div>
 
             <button type="button" class="add-item-btn" onclick="addItem()">+ Add Another Item</button>
@@ -121,63 +120,76 @@
             <input type="submit" value="Place Order" class="submit-btn">
         </form>
     </div>
- <!-- functions for adding items-->
+
+    <!-- Functions for adding/removing items -->
     <script>
-      // Define an array of objects for products
-      const products = [
-        { name: "Bread", value: "bread" },
-        { name: "Pastries", value: "pastries" },
-        { name: "Cakes", value: "cakes" },
-        { name: "Ards T (size in person)", value: "ards_t" },
-        { name: "Ards Hat", value: "ards_hat" },
-        { name: "Ards Bottle", value: "ards_bottle" },
-        { name: "Family Box", value: "family_box" }
-    ];
+        // Define an array of objects for products
+        const products = [
+            { name: "Bread", value: "bread" },
+            { name: "Pastries", value: "pastries" },
+            { name: "Cakes", value: "cakes" },
+            { name: "Ards T (size in person)", value: "ards_t" },
+            { name: "Ards Hat", value: "ards_hat" },
+            { name: "Ards Bottle", value: "ards_bottle" },
+            { name: "Family Box", value: "family_box" }
+        ];
 
-    function addItem() {
-        let container = document.getElementById("items-container");
-        let newItem = document.createElement("div");
-        newItem.classList.add("item-container");
+        function addItem(name = "", count = 1) {
+            let container = document.getElementById("items-container");
+            let newItem = document.createElement("div");
+            newItem.classList.add("item-container");
 
-        // Generate options dynamically from the products array
-        let optionsHTML = products.map(product => 
-            `<option value="${product.value}">${product.name}</option>`
-        ).join('');
+            // Generate options dynamically
+            let optionsHTML = products.map(product => 
+                `<option value="${product.value}" ${product.name === name ? "selected" : ""}>${product.name}</option>`
+            ).join('');
 
-        newItem.innerHTML = `
-            <label>Select Item</label>
-            <select name="items">${optionsHTML}</select>
+            newItem.innerHTML = `
+                <label>Select Item</label>
+                <select name="items">${optionsHTML}</select>
 
-            <label>Quantity</label>
-            <input type="number" name="quantity" min="1" max="50" value="1" required>
+                <label>Quantity</label>
+                <input type="number" name="count" min="1" max="50" value="${count}" required>
 
-            <button type="button" class="remove-item-btn" onclick="removeItem(this)">Remove</button>
-        `;
+                <button type="button" class="remove-item-btn" onclick="removeItem(this)">Remove</button>
+            `;
 
-        container.appendChild(newItem);
-    }
+            container.appendChild(newItem);
+        }
 
-    function removeItem(button) {
-        button.parentElement.remove();
-    }
-        
-     $(document).ready(function() {
-          $('#header').load('https://richyxdd.github.io/ARDS/navigation/header.html', function() {
-              $('body').css('visibility', 'visible');
-          });
-    
-      });
+        function removeItem(button) {
+            button.parentElement.remove();
+        }
 
+        $(document).ready(function() {
+            let autofillCart = localStorage.getItem("autofillCart");
+            if (autofillCart) {
+                let cart = JSON.parse(autofillCart);
+                $.each(cart, function(name, item) {
+                    addItem(name, item.count);
+                });
+                localStorage.removeItem("autofillCart");
+            }
+
+            let autofillBundle = localStorage.getItem("autofillBundle");
+            if (autofillBundle) {
+                let bundle = JSON.parse(autofillBundle);
+                $.each(bundle.items, function(index, item) {
+                    addItem(item.name, item.count);
+                });
+                localStorage.removeItem("autofillBundle");
+            }
+
+            // Load header and footer
+            $('#header').load('https://richyxdd.github.io/ARDS/navigation/header.html', function() {
+                $('body').css('visibility', 'visible');
+            });
+            $('#footer').load('https://richyxdd.github.io/ARDS/navigation/footer.html');
+        });
     </script>
 
- <hr class="white-line">
-    <div class="footer" style="text-align: center; line-height: 2; color: white; margin-top: 30px">
-        <div class="container" style="padding-left: 10%; padding-right: 10%; padding-top: 20px; padding-bottom: 50px; display: flex; justify-content: space-between;">
-            <div>VISIT OUR STORE<br/>2000 Mass Ave<br/>Cambridge, MA 02140</div>
-            <div>SHOP WITH US ONLINE<br/><a href="order.html">Order Online</a><br/><a href="subscriptions.html">Subscription</a><br/><a href="merch.html">Merch</a></div>
-            <div>STAY IN TOUCH<br/>@ardsbakery<br/><a href="#">Contact Us</a></div>
-        </div>
-    </div>
+    <!-- Footer -->
+    <div id="footer"></div>
 
 </body>
 </html>
