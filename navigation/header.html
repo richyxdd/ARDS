@@ -232,10 +232,11 @@
         }
 
     $(".checkout-cart").click(function() {
-        localStorage.setItem("cart", JSON.stringify(cart));
+        let cartJSON = JSON.stringify(cart);
+        localStorage.setItem("cartJSON", cartJSON);
         window.location.href = "order.html";
+        });
     });
-  
       // Toggle cart details view
     $("#cart").click(function(){
           $("#cart-details").fadeToggle();
