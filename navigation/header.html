@@ -230,12 +230,14 @@
             localStorage.setItem("cartHistory", JSON.stringify(cartHistory));
             updateCart();
         }
-
-    $(".checkout-cart").click(function() {
-        let cartJSON = JSON.stringify(cart);
-        localStorage.setItem("cartJSON", cartJSON);
-        window.location.href = "order.html";
+        
+    $(document).ready(function() {
+        $(".checkout-cart").click(function() {
+            localStorage.setItem("cart", JSON.stringify(cart)); // Save cart before redirect
+            window.location.href = "order.html";
         });
+    });
+
     });
       // Toggle cart details view
     $("#cart").click(function(){
