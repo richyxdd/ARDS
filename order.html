@@ -149,19 +149,20 @@
             }
 
             // Generate options dynamically
-            let optionsHTML = products.map(product => 
-                <option value="${product.value}" ${product.name === name ? "selected" : ""}>${product.name}</option>
-            ).join('');
-
-            newItem.innerHTML = 
+            let optionsHTML = products.map(function(product) {
+                return `<option value="${product.value}" ${product.name === name ? "selected" : ""}>${product.name}</option>`;
+            }).join('');
+            
+            newItem.innerHTML = `
                 <label>Select Item</label>
                 <select name="items">${optionsHTML}</select>
-
+            
                 <label>Quantity</label>
                 <input type="number" name="count" min="1" max="50" value="${count}" required>
-
+            
                 <button type="button" class="remove-item-btn" onclick="removeItem(this)">Remove</button>
-            ;
+            `;
+
 
             container.appendChild(newItem);
         }
@@ -181,9 +182,7 @@
                     addItem(name, item.count);
                 });
             }
-        });
-
-
+        
             let autofillBundle = localStorage.getItem("autofillBundle");
             if (autofillBundle) {
                 let bundle = JSON.parse(autofillBundle);
@@ -192,13 +191,14 @@
                 });
                 localStorage.removeItem("autofillBundle");
             }
-
-            // Load header and footer
+        
+            // load header and footer
             $('#header').load('https://richyxdd.github.io/ARDS/navigation/header.html', function() {
                 $('body').css('visibility', 'visible');
             });
             $('#footer').load('https://richyxdd.github.io/ARDS/navigation/footer.html');
         });
+
     </script>
 
     <!-- Footer -->
