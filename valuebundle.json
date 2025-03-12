@@ -1,0 +1,41 @@
+{
+    "bundleName": "Limited Edition ARDS Value Bundle",
+    "items": [
+        {
+            "name": "GOLDEN PASTRY",
+            "type": "food",
+            "count": 2,
+            "price": 8
+        },
+        {
+            "name": "GARDEN CAKE",
+            "type": "food",
+            "count": 1,
+            "price": 17
+        },
+        {
+            "name": "OLIVE BRANCH BREAD",
+            "type": "food",
+            "count": 3,
+            "price": 6
+        },
+        {
+            "name": "ARDS T-SHIRT",
+            "type": "merch",
+            "count": 1,
+            "price": 15
+        },
+        {
+            "name": "ARDS HAT",
+            "type": "merch",
+            "count": 1,
+            "price": 6
+        },
+        {
+            "name": "ARDS BOTTLE",
+            "type": "merch",
+            "count": 1,
+            "price": 12
+        }
+    ]
+}
