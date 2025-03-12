@@ -55,6 +55,26 @@
         width: 100%; /* Ensure images resize correctly */
         height: auto;
         }
+    #get-value-bundle {
+        display: block;
+        margin: 40px auto;
+        background: rgb(133, 114, 60);
+        color: white;
+        font-size: 24px;
+        padding: 30px 60px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        font-weight: bold;
+        width: 500px;
+    }
+
+    #get-value-bundle:hover {
+        background: rgb(156, 134, 74);
+        transform: scale(1.1);
+    }
+
   }
    
 </style>
@@ -74,7 +94,22 @@
 
     <!-- Main Content Text-->
     <h2 style="margin-left: 20%; margin-right: 20%">ARTISANAL BAKERY WHERE TIME-HONED TECHNIQUES MEET MODERN FLAVORS</h2>
-
+<!-- Value Bundle -->
+    <br><br><br><br><br><br>
+    <h2 style="margin-left: 20%; margin-right: 20%">LIMITED TIME OFFER: VALUE BUNDLE</h2>
+    <h3 style="margin-left: 20%; margin-right: 20%">Includes Merch AND Bakery Products</h3>
+    <br><button href="order.html" id="get-value-bundle">⭐️ Buy While Supplies Last! ⭐️</button>
+    <br><script>
+      $(document).ready(function() {
+          $("#get-value-bundle").click(function() {
+              $.getJSON("valuebundle.json", function(data) {
+                  let bundleJSON = JSON.stringify(data);
+                  localStorage.setItem("autofillBundle", bundleJSON);
+                  window.location.href = "order.html";
+              });
+          });
+      });
+  </script>
     <!-- Best Sellers -->
     <h3 style="margin-top: 100px;">DISCOVER OUR BEST SELLERS</h3>
     <div class="container">
