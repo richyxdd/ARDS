@@ -2,19 +2,19 @@
     "bundleName": "Limited Edition ARDS Value Bundle",
     "items": [
         {
-            "name": "GOLDEN PASTRY",
+            "name": "Golden Pastry",
             "type": "food",
             "count": 2,
             "price": 8
         },
         {
-            "name": "GARDEN CAKE",
+            "name": "Garden Cake",
             "type": "food",
             "count": 1,
             "price": 17
         },
         {
-            "name": "OLIVE BRANCH BREAD",
+            "name": "Olive Branch Bread",
             "type": "food",
             "count": 3,
             "price": 6
