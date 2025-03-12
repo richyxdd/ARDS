@@ -233,10 +233,14 @@
         
     $(document).ready(function() {
         $(".checkout-cart").click(function() {
-            localStorage.setItem("cart", JSON.stringify(cart)); // Save cart before redirect
+            localStorage.setItem("cart", JSON.stringify(cart));
+            localStorage.setItem("total", total.toFixed(2));
+            localStorage.setItem("cartHistory", JSON.stringify(cartHistory));
+    
             window.location.href = "order.html";
         });
     });
+
 
     });
       // Toggle cart details view
