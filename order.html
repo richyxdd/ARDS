@@ -125,19 +125,28 @@
     <script>
         // Define an array of objects for products
         const products = [
-            { name: "Bread", value: "bread" },
-            { name: "Pastries", value: "pastries" },
-            { name: "Cakes", value: "cakes" },
-            { name: "Ards T (size in person)", value: "ards_t" },
-            { name: "Ards Hat", value: "ards_hat" },
-            { name: "Ards Bottle", value: "ards_bottle" },
+            { name: "Golden Pastry", value: "golden_pastry" },
+            { name: "Garden Cake", value: "garden_cake" },
+            { name: "Olive Branch Bread", value: "olive_branch_bread" },
+            { name: "ARDS T-SHIRT", value: "ards_t_shirt" },
+            { name: "ARDS HAT", value: "ards_hat" },
+            { name: "ARDS BOTTLE", value: "ards_bottle" },
             { name: "Family Box", value: "family_box" }
-        ];
+            ];
 
         function addItem(name = "", count = 1) {
             let container = document.getElementById("items-container");
             let newItem = document.createElement("div");
             newItem.classList.add("item-container");
+
+            let selected = "";
+            let match = products.find(function(product) {
+            return product.name.toLowerCase() === name.toLowerCase();
+            });
+        
+            if (match) {
+                selected = match.value;
+            }
 
             // Generate options dynamically
             let optionsHTML = products.map(product => 
@@ -162,14 +171,18 @@
         }
 
         $(document).ready(function() {
-            let autofillCart = localStorage.getItem("autofillCart");
-            if (autofillCart) {
-                let cart = JSON.parse(autofillCart);
-                $.each(cart, function(name, item) {
+            let storedCart = localStorage.getItem("cart");
+        
+            if (storedCart) {
+                let cart = JSON.parse(storedCart);
+                
+                Object.keys(cart).forEach(function(name) {
+                    let item = cart[name];
                     addItem(name, item.count);
                 });
-                localStorage.removeItem("autofillCart");
             }
+        });
+
 
             let autofillBundle = localStorage.getItem("autofillBundle");
             if (autofillBundle) {
